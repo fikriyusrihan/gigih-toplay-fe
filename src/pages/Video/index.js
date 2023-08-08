@@ -1,7 +1,8 @@
 import { videos } from '../../utils/dummy_data';
-import { Grid, GridItem, Heading, HStack } from '@chakra-ui/react';
+import { Grid, GridItem, HStack } from '@chakra-ui/react';
 import { useLoaderData } from 'react-router-dom';
 import Product from '../../components/Product';
+import Comment from '../../components/Comment';
 
 export async function loader({ params }) {
   const { videoId } = params;
@@ -23,11 +24,13 @@ export default function Index() {
           height="100%"
           src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1"></iframe>
       </GridItem>
-      <GridItem rowSpan={10} colSpan={1} bg="papayawhip">
-        <Heading>{video.title}</Heading>
+      <GridItem p={2} rowSpan={10} colSpan={1} bg="papayawhip">
+        <p>{video.title}</p>
+        <Comment />
       </GridItem>
       <GridItem rowSpan={2} colSpan={4}>
         <HStack minH="0">
+          <Product />
           <Product />
           <Product />
           <Product />

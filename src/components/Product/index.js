@@ -3,7 +3,7 @@ import { Card, CardBody, Heading, Stack, Image } from '@chakra-ui/react';
 export default function Index() {
   return (
     <Card maxW="40">
-      <CardBody p={2} margin="auto">
+      <CardBody p={2}>
         <Image
           minH="0"
           objectFit="cover"
@@ -12,7 +12,9 @@ export default function Index() {
           borderRadius="lg"
         />
         <Stack mt="2">
-          <Heading size="sm">Living room Sofa</Heading>
+          <Heading size="sm" textAlign="center" noOfLines={1}>
+            Living room Sofa Premium Quality
+          </Heading>
         </Stack>
       </CardBody>
     </Card>
