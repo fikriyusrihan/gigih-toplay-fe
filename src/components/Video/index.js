@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { FaCircle, FaEye } from 'react-icons/fa6';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
 Index.propTypes = {
   video: PropTypes.shape({
@@ -35,8 +36,10 @@ const getVideoId = (videoUrl) => {
 };
 
 export default function Index({ video }) {
+  const navigation = useNavigate();
+
   const handleClick = () => {
-    alert('Coming soon! ' + video.id);
+    navigation(`/videos/${video.id}`);
   };
 
   return (

@@ -1,16 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Home from './pages/Home';
+import Root from './pages/Root';
 import Error from './pages/Error';
-import reportWebVitals from './reportWebVitals';
+import Video, { loader as videoLoader } from './pages/Video';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    element: <Root />,
     errorElement: <Error />
+  },
+  {
+    path: '/videos/:videoId',
+    loader: videoLoader,
+    element: <Video />
   }
 ]);
 
@@ -26,4 +31,4 @@ root.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// reportWebVitals();
