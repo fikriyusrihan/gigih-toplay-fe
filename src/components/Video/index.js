@@ -13,6 +13,7 @@ import {
 import { FaCircle, FaEye } from 'react-icons/fa6';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import { getVideoId } from '../../utils/youtube';
 
 Index.propTypes = {
   video: PropTypes.shape({
@@ -26,13 +27,6 @@ Index.propTypes = {
       viewers_count: PropTypes.number
     })
   })
-};
-
-const getVideoId = (videoUrl) => {
-  const url = new URL(videoUrl);
-  const params = url.searchParams;
-
-  return params.get('v');
 };
 
 export default function Index({ video }) {

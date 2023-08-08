@@ -1,19 +1,39 @@
 import { Card, CardBody, Heading, Stack, Image } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+import { products } from '../../utils/dummy_data';
+import PropTypes from 'prop-types';
 
-export default function Index() {
+Index.propTypes = {
+  id: PropTypes.string.isRequired
+};
+
+export default function Index({ id }) {
+  const [product, setProduct] = useState({});
+
+  const handleClick = () => {
+    window.open(product.product_url, '_blank');
+  };
+
+  useEffect(() => {
+    const product = products.find((product) => product.id === id);
+
+    console.log(product);
+    setProduct(product);
+  }, []);
+
   return (
-    <Card maxW="40">
+    <Card maxW="40" cursor="pointer" flexShrink="0" onClick={handleClick}>
       <CardBody p={2}>
         <Image
           minH="0"
           objectFit="cover"
-          src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-          alt="Green double couch with wooden legs"
+          src={product.image_url}
+          alt={`${product.name} thumbnail`}
           borderRadius="lg"
         />
         <Stack mt="2">
           <Heading size="sm" textAlign="center" noOfLines={1}>
-            Living room Sofa Premium Quality
+            {product.title}
           </Heading>
         </Stack>
       </CardBody>

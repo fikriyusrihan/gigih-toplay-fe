@@ -42,7 +42,7 @@ const videos = [
     id: 'e47e1066-21cf-4d86-8797-4b6bb9e26dc5',
     title: 'Simple Untuk Vlogging! - Insta360 Go 3 Review Indonesia',
     video_url: 'https://www.youtube.com/watch?v=psgQ6u3pBcM',
-    products: [],
+    products: ['64c003950b5fbf5bfebca74d', '64c28adaf1131226970b3056'],
     user: {
       username: 'itechlife',
       display_name: 'iTechLife'
@@ -105,4 +105,45 @@ const videos = [
   }
 ];
 
-export { videos };
+const products = [
+  {
+    title: 'Sony Alpha a7 III - Kamera Mirrorless 24MP',
+    description:
+      'Kamera Sony Alpha a7 III menawarkan kualitas gambar profesional dengan sensor full-frame 24.2MP dan kemampuan rekaman video 4K. Cocok untuk fotografer dan videografer yang serius.',
+    price: 1899,
+    image_url:
+      'https://images.tokopedia.net/img/cache/700/OJWluG/2023/1/9/304e28ed-3975-43d5-a426-3af3a0f029f3.jpg.webp?ect=4g',
+    product_url: 'https://www.tokopedia.com/catalog/sony-72080/sony-a7s',
+    id: '64c003950b5fbf5bfebca74d'
+  },
+  {
+    title: 'Nike Air Max 270 - Sepatu Olahraga Pria',
+    description:
+      'Sepatu Nike Air Max 270 menawarkan kenyamanan luar biasa dengan teknologi Max Air di bagian tumit. Desainnya yang keren juga cocok untuk digunakan sehari-hari.',
+    price: 129.99,
+    image_url:
+      'https://images.tokopedia.net/img/cache/900/product-1/2020/5/3/785685202/785685202_85f01ec5-98f8-49cc-9079-7873d9d43c9e_452_452.jpg',
+    product_url:
+      'https://www.tokopedia.com/andzarstore/sepatu-sneakers-nike-air-max-270-white-ah6789-100-original-bnwb-murah',
+    id: '64c28adaf1131226970b3056'
+  }
+];
+
+const comment = [
+  {
+    username: 'fikriyusrihan',
+    comment: 'Saya mau beli nih kak',
+    timestamp: '2023-07-27T14:44:10.217Z',
+    video_id: 'e47e1066-21cf-4d86-8797-4b6bb9e26dc5',
+    id: '64c282ba5e05de15a5d41514'
+  },
+  {
+    username: 'fikriyusrihan',
+    comment: 'Berapaan kak?',
+    timestamp: '2023-07-27T14:43:51.956Z',
+    video_id: 'e47e1066-21cf-4d86-8797-4b6bb9e26dc5',
+    id: '64c282a75e05de15a5d41511'
+  }
+];
+
+export { videos, products, comment };

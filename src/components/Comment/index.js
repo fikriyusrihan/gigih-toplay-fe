@@ -1,16 +1,22 @@
 import { Heading, Text, CardBody, Card, StackDivider, Stack, Box } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
 
-export default function Index() {
+Index.propTypes = {
+  comment: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    comment: PropTypes.string.isRequired
+  })
+};
+
+export default function Index({ comment }) {
   return (
-    <Card>
+    <Card flexShrink="0">
       <CardBody>
         <Stack divider={<StackDivider />} spacing="4">
           <Box>
-            <Heading size="xs" textTransform="uppercase">
-              Summary
-            </Heading>
+            <Heading size="sm">{comment.username}</Heading>
             <Text pt="2" fontSize="sm">
-              View a summary of all your clients over the last month.
+              {comment.comment}
             </Text>
           </Box>
         </Stack>
