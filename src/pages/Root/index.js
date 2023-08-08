@@ -1,16 +1,41 @@
 import Navbar from '../../components/Navbar';
 import Video from '../../components/Video';
-import { Button, Flex, Grid, Heading, Text } from '@chakra-ui/react';
-import { FaArrowRight } from 'react-icons/fa';
+import {
+  Flex,
+  Grid,
+  Heading,
+  Icon,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  Text
+} from '@chakra-ui/react';
 import { videos } from '../../utils/dummy_data';
 import { useEffect, useState } from 'react';
+import { FaMagnifyingGlass } from 'react-icons/fa6';
 
 export default function Index() {
+  const [query, setQuery] = useState('');
   const [response, setResponse] = useState({});
+
+  const handleQueryChange = (e) => {
+    setQuery(e.target.value);
+  };
 
   useEffect(() => {
     setResponse({ data: videos });
   }, []);
+
+  useEffect(() => {
+    if (query.length > 0) {
+      const data = videos.filter((video) =>
+        video.title.toLowerCase().includes(query.toLowerCase())
+      );
+      setResponse({ data });
+    } else {
+      setResponse({ data: videos });
+    }
+  }, [query]);
   return (
     <>
       <Navbar />
@@ -26,16 +51,23 @@ export default function Index() {
           never before.
         </Text>
 
-        <Button alignSelf="center" colorScheme="green" rightIcon={<FaArrowRight />}>
-          Explore
-        </Button>
+        <InputGroup>
+          <InputLeftElement pointerEvents="none">
+            <Icon as={FaMagnifyingGlass} color="gray.300" />
+          </InputLeftElement>
+          <Input
+            type="text"
+            placeholder="Search for live videos..."
+            value={query}
+            onChange={handleQueryChange}
+          />
+        </InputGroup>
       </Flex>
 
       <Grid
-        id="container-videos"
         templateColumns={['repeat(2, 1fr)', 'repeat(4, 1fr)']}
         gap={2}
-        paddingX={6}
+        paddingX={10}
         marginTop={10}
         marginBottom={10}>
         {response?.data?.map((video) => (
