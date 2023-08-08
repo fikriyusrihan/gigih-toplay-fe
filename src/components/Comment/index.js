@@ -1,26 +1,20 @@
-import { Text, CardBody, Card, StackDivider, Stack, Box } from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
 Index.propTypes = {
-  comment: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-    comment: PropTypes.string.isRequired
-  })
+  children: PropTypes.node.isRequired
 };
 
-export default function Index({ comment }) {
+export default function Index({ children }) {
   return (
-    <Card flexShrink="0">
-      <CardBody>
-        <Stack divider={<StackDivider />} spacing="4">
-          <Box>
-            <Text fontSize="sm">
-              <span style={{ fontWeight: 'bold', marginRight: '4px' }}>{comment.username}</span>
-              {comment.comment}
-            </Text>
-          </Box>
-        </Stack>
-      </CardBody>
-    </Card>
+    <Stack
+      p={2}
+      h="100%"
+      direction="column-reverse"
+      overflowY="auto"
+      boxShadow="xs"
+      borderRadius={4}>
+      {children}
+    </Stack>
   );
 }

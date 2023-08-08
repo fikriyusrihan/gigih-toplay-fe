@@ -1,15 +1,10 @@
 import { comment, videos } from '../../utils/dummy_data';
 import {
-  Button,
-  Card,
-  CardBody,
   Divider,
   Grid,
   GridItem,
   Heading,
   HStack,
-  Input,
-  Stack,
   Tag,
   TagLabel,
   TagLeftIcon,
@@ -17,9 +12,12 @@ import {
   VStack
 } from '@chakra-ui/react';
 import { useLoaderData } from 'react-router-dom';
-import Product from '../../components/Product';
 import Comment from '../../components/Comment';
+import CommentItem from '../../components/CommentItem';
+import CommentForm from '../../components/CommentForm';
 import Navbar from '../../components/Navbar';
+import Youtube from '../../components/Youtube';
+import FeaturedProducts from '../../components/FeaturedProducts';
 import { FaCircle, FaEye } from 'react-icons/fa6';
 import { getVideoId } from '../../utils/youtube';
 import { useEffect, useState } from 'react';
@@ -44,45 +42,29 @@ export default function Index() {
     <>
       <Navbar />
       <Grid
-        paddingX={{ base: 2, md: 10 }}
         h="100vh"
-        templateColumns="repeat(10, 1fr)"
-        templateRows="repeat(10, 1fr)"
+        my={{ base: 2, md: 10 }}
+        px={{ base: 2, md: 10 }}
         gap={2}
-        marginY={10}>
+        templateColumns="repeat(10, 1fr)"
+        templateRows="repeat(10, 1fr)">
         <GridItem rowSpan={8} colSpan={{ base: 10, md: 7 }} bg="green" rounded={4}>
-          <iframe
-            id="ytplayer"
-            type="text/html"
-            width="100%"
-            height="100%"
-            src={`https://www.youtube.com/embed/${getVideoId(
-              video.video_url
-            )}?autoplay=1`}></iframe>
+          <Youtube videoId={getVideoId(video.video_url)} />
         </GridItem>
-        <GridItem p={2} rowSpan={6} colSpan={{ base: 10, md: 3 }}>
-          <Stack
-            p={2}
-            direction="column-reverse"
-            overflowY="auto"
-            h="100%"
-            boxShadow="xs"
-            borderRadius={4}>
+
+        <GridItem rowSpan={6} colSpan={{ base: 10, md: 3 }}>
+          <Comment>
             {comments.map((comment) => (
-              <Comment key={comment.id} comment={comment} />
+              <CommentItem key={comment.id} comment={comment} />
             ))}
-          </Stack>
+          </Comment>
         </GridItem>
-        <GridItem p={2} rowSpan={2} colSpan={{ base: 10, md: 3 }}>
-          <Stack p={2} boxShadow="xs" borderRadius={4}>
-            <Input placeholder="Name" size="sm" />
-            <Input placeholder="Comment" size="sm" />
-            <Button colorScheme="green" size="sm">
-              Submit
-            </Button>
-          </Stack>
+
+        <GridItem rowSpan={2} colSpan={{ base: 10, md: 3 }}>
+          <CommentForm />
         </GridItem>
-        <GridItem p={2} rowSpan={2} colSpan={10} marginTop={5}>
+
+        <GridItem rowSpan={2} colSpan={10} marginTop={5}>
           <VStack alignItems="flex-start">
             <HStack>
               <Tag size="sm" variant="subtle" colorScheme="red">
@@ -106,24 +88,7 @@ export default function Index() {
           </VStack>
 
           <Divider marginTop={5} />
-
-          {video.products.length <= 0 ? (
-            <Card w="100%">
-              <CardBody>
-                <Text>Featured products coming soon from our live streamers. Stay tuned!</Text>
-              </CardBody>
-            </Card>
-          ) : (
-            <Heading size="sm" marginTop={5} marginBottom={4}>
-              Featured Products
-            </Heading>
-          )}
-
-          <HStack spacing={2} overflowX="auto">
-            {video.products.map((productId) => (
-              <Product key={productId} id={productId} />
-            ))}
-          </HStack>
+          <FeaturedProducts products={video.products} />
         </GridItem>
       </Grid>
     </>

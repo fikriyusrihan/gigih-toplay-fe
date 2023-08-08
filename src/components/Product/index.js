@@ -16,8 +16,6 @@ export default function Index({ id }) {
 
   useEffect(() => {
     const product = products.find((product) => product.id === id);
-
-    console.log(product);
     setProduct(product);
   }, []);
 
