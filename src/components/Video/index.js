@@ -61,9 +61,11 @@ export default function Index({ video }) {
                 <TagLabel>{video.meta.viewers_count}</TagLabel>
               </Tag>
             </HStack>
+
             <Heading as="h6" size="sm">
               {video.title}
             </Heading>
+
             <Text fontSize="xs" color="grey">
               {video.user.display_name}
             </Text>
