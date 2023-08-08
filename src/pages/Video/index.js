@@ -44,13 +44,13 @@ export default function Index() {
     <>
       <Navbar />
       <Grid
-        paddingX={10}
+        paddingX={{ base: 2, md: 10 }}
         h="100vh"
         templateColumns="repeat(10, 1fr)"
         templateRows="repeat(10, 1fr)"
         gap={2}
         marginY={10}>
-        <GridItem rowSpan={8} colSpan={7} bg="green" rounded={4}>
+        <GridItem rowSpan={8} colSpan={{ base: 10, md: 7 }} bg="green" rounded={4}>
           <iframe
             id="ytplayer"
             type="text/html"
@@ -60,7 +60,7 @@ export default function Index() {
               video.video_url
             )}?autoplay=1`}></iframe>
         </GridItem>
-        <GridItem p={2} rowSpan={6} colSpan={3}>
+        <GridItem p={2} rowSpan={6} colSpan={{ base: 10, md: 3 }}>
           <Stack
             p={2}
             direction="column-reverse"
@@ -73,7 +73,7 @@ export default function Index() {
             ))}
           </Stack>
         </GridItem>
-        <GridItem p={2} rowSpan={2} colSpan={3}>
+        <GridItem p={2} rowSpan={2} colSpan={{ base: 10, md: 3 }}>
           <Stack p={2} boxShadow="xs" borderRadius={4}>
             <Input placeholder="Name" size="sm" />
             <Input placeholder="Comment" size="sm" />
@@ -82,7 +82,7 @@ export default function Index() {
             </Button>
           </Stack>
         </GridItem>
-        <GridItem rowSpan={2} colSpan={10} marginTop={5}>
+        <GridItem p={2} rowSpan={2} colSpan={10} marginTop={5}>
           <VStack alignItems="flex-start">
             <HStack>
               <Tag size="sm" variant="subtle" colorScheme="red">

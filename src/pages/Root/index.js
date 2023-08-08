@@ -67,7 +67,7 @@ export default function Index() {
       <Grid
         templateColumns={['repeat(2, 1fr)', 'repeat(4, 1fr)']}
         gap={2}
-        paddingX={10}
+        paddingX={{ base: 2, md: 10 }}
         marginTop={10}
         marginBottom={10}>
         {response?.data?.map((video) => (

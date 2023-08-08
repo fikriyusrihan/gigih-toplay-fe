@@ -1,4 +1,4 @@
-import { Heading, Text, CardBody, Card, StackDivider, Stack, Box } from '@chakra-ui/react';
+import { Text, CardBody, Card, StackDivider, Stack, Box } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
 Index.propTypes = {
@@ -14,8 +14,8 @@ export default function Index({ comment }) {
       <CardBody>
         <Stack divider={<StackDivider />} spacing="4">
           <Box>
-            <Heading size="sm">{comment.username}</Heading>
-            <Text pt="2" fontSize="sm">
+            <Text fontSize="sm">
+              <span style={{ fontWeight: 'bold', marginRight: '4px' }}>{comment.username}</span>
               {comment.comment}
             </Text>
           </Box>
