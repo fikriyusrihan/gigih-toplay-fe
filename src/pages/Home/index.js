@@ -1,8 +1,16 @@
 import Navbar from '../../components/Navbar';
-import { Button, Flex, Heading, Text } from '@chakra-ui/react';
+import Video from '../../components/Video';
+import { Button, Flex, Grid, Heading, Text } from '@chakra-ui/react';
 import { FaArrowRight } from 'react-icons/fa';
+import { videos } from '../../utils/dummy_data';
+import { useEffect, useState } from 'react';
 
 export default function Index() {
+  const [response, setResponse] = useState({});
+
+  useEffect(() => {
+    setResponse({ data: videos });
+  }, []);
   return (
     <>
       <Navbar />
@@ -22,6 +30,18 @@ export default function Index() {
           Explore
         </Button>
       </Flex>
+
+      <Grid
+        id="container-videos"
+        templateColumns={['repeat(2, 1fr)', 'repeat(4, 1fr)']}
+        gap={2}
+        paddingX={6}
+        marginTop={10}
+        marginBottom={10}>
+        {response?.data?.map((video) => (
+          <Video key={video.id} video={video} />
+        ))}
+      </Grid>
     </>
   );
 }
