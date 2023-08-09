@@ -23,8 +23,8 @@ export default function Index() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post('/videos/' + params.videoId + '/comments', form).then((res) => {
-      console.log(res);
+    axios.post('/videos/' + params.videoId + '/comments', form).then(() => {
+      setForm({ ...form, comment: '' });
     });
   };
 

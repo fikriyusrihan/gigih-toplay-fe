@@ -10,6 +10,7 @@ import VideoDetail from '../../components/VideoDetail';
 import { getVideoId } from '../../utils/youtube';
 import { useEffect, useState } from 'react';
 import axios from '../../utils/axios';
+import io from 'socket.io-client';
 
 export async function loader({ params }) {
   const { videoId } = params;
@@ -31,6 +32,19 @@ export default function Index() {
         const comments = res.data.data.items;
         setComments(comments);
       });
+
+    const socket = io(`ws://localhost:3080`, {
+      path: '/api/v1/comments',
+      query: { videoId: video.id }
+    });
+
+    socket.on('newComment', (comment) => {
+      setComments((prevComments) => [comment, ...prevComments]);
+    });
+
+    return () => {
+      socket.disconnect();
+    };
   }, []);
 
   return (
