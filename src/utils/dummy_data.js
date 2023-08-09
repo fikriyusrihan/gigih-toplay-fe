@@ -109,12 +109,7 @@ const products = [
   {
     title: 'LAPTOP AXIOO PONGO 760 GEN 2 | i7 12650H 16GB 512GB RTX 4060 8GB 144Hz - Normal',
     description:
-      'Spesifikasi:\n' +
-      '\n' +
-      'Processor: Intel® Core™ i7-12650H (10 Cores,16 Threads, TDP: 45W)\n' +
-      'Chipset: Intel® Alder Lake\n' +
-      'Graphics Controller: Intel® Graphics\n' +
-      'Graphics: RTX4060 8GB DDR6 (100w) Hybrid',
+      'AXIOO PONGO 760 merupakan laptop gaming dengan layar 15.6 inci yang didukung oleh prosesor Intel Core i7-12650H dan kartu grafis NVIDIA GeForce RTX 4060 8GB. Laptop ini juga dilengkapi dengan RAM 16GB dan penyimpanan SSD 512GB.',
     price: 15849000,
     image_url:
       'https://images.tokopedia.net/img/cache/900/VqbcmM/2023/7/13/771193c9-e3c7-4c5d-836c-bf717c55483b.png',
@@ -125,10 +120,7 @@ const products = [
   {
     title: 'Lenovo Ideapad Gaming 3 Ryzen 5 7535HS RTX2050 512GB SSD 8GB 120Hz',
     description:
-      'Lenovo Ideapad Gaming 3 Ryzen 5 7535HS RTX2050 512GB SSD 8GB 120Hz Win+OHS\n' +
-      '\n' +
-      'IdeaPad Gaming 3 15ARH7\n' +
-      'Part Number : 82SB00JHID',
+      'Lenovo Ideapad Gaming 3 cocok untuk kamu yang suka bermain game berat seperti GTA V, PUBG, dan lainnya. Dengan spesifikasi yang mumpuni, kamu bisa bermain game dengan lancar dan nyaman.',
     price: 12499000,
     image_url:
       'https://images.tokopedia.net/img/cache/900/VqbcmM/2023/5/9/02fa6144-ae3d-4fd6-8737-d7cc1e4e5c71.jpg',
@@ -138,7 +130,7 @@ const products = [
   },
   {
     title: 'Asus ROG Phone 7 12/256 8/256GB ROG Phone 7 Ultimate',
-    description: '🛒READY STOK SIAP KIRIM🛒\n' + '\n' + 'ULTIMATE : 16/512GB',
+    description: 'Asus ROG Phone 7 merupakan smartphone gaming terbaru dari Asus.',
     price: 13399000,
     image_url:
       'https://images.tokopedia.net/img/cache/900/VqbcmM/2023/7/26/0e1122a3-31f1-4896-9352-32e0193e3d53.jpg',
@@ -148,17 +140,7 @@ const products = [
   },
   {
     title: 'Official Xiaomi Pad 6 (8GB/256GB)',
-    description:
-      'Official Xiaomi Pad 6\n' +
-      '\n' +
-      'Warna: Mist Blue, Gravity Gray\n' +
-      '\n' +
-      'Processor:\n' +
-      '- Snapdragon 870 Mobile Platform\n' +
-      '\n' +
-      'RAM/Storage:\n' +
-      '- 8GB/256GB\n' +
-      '- LPDDR5 RAM + UFS 3.1 Storage',
+    description: 'Xiaomi Pad 6 (8GB/256GB) - Snapdragon 870 - Layar 11" WQHD - Gravity Gray',
     price: 49990000,
     image_url:
       'https://images.tokopedia.net/img/cache/900/VqbcmM/2023/8/7/506bbfba-6497-4fdd-a289-c051e6a50af6.png',
@@ -168,9 +150,7 @@ const products = [
   },
   {
     title: 'Insta360 GO 3 Insta360 GO3 Tiny Action Camera',
-    description:
-      '* Garansi Resmi 1 Thn PT.DENKA PRATAMA INDONESIA\n' +
-      '* Garansi 14 HARI TUKAR BARU (Hanya berlaku Kerusakan dari Pabrik/Factory Defect.',
+    description: 'Insta360 GO 3 Insta360 GO3 Tiny Action Camera with Action Pod 32GB',
     price: 6099000,
     image_url:
       'https://images.tokopedia.net/img/cache/900/VqbcmM/2023/6/28/ba35a2d5-a2ca-4331-9834-4de7931d3505.png',
@@ -181,12 +161,7 @@ const products = [
   {
     title: 'HUAWEI MatePad Air Tablet [8+128GB]',
     description:
-      'Spesifikasi:\n' +
-      '- Warna: Graphite Black.\n' +
-      '- Memori: 8GB+128GB\n' +
-      '- Dimensi: 261,89mm x 178,17mm x 6,4mm\n' +
-      '- Berat: Kira-kira 508\n' +
-      '- Ukuran: 11,5 inci',
+      'HUAWEI MatePad Air Tablet ini memiliki layar 10.4 inch dengan resolusi 2000 x 1200 pixels. Tablet ini juga dilengkapi dengan prosesor Kirin 820 5G (7 nm) dan baterai berkapasitas 7250 mAh. Sistem operasi yang digunakan adalah Android 10, EMUI 10, no Google Play Services.',
     price: 7979000,
     image_url:
       'https://images.tokopedia.net/img/cache/900/VqbcmM/2023/8/2/198c8c86-805f-4a96-854e-cbd5cb1ed50c.png',
@@ -196,8 +171,7 @@ const products = [
   },
   {
     title: 'Apple iPad Air (Gen 5) 10,9 inci 256GB 64GB Garansi Resmi',
-    description:
-      'iSmile adalah APPLE ONLINE RESELLER yang khusus menjual produk APPLE ORIGINAL dan BERGARANSI RESMI.',
+    description: 'iPad Air (Gen 5) 10,9 inci 256GB 64GB Garansi Resmi - Gray - Wifi 64GB',
     price: 9399000,
     image_url:
       'https://images.tokopedia.net/img/cache/900/VqbcmM/2023/2/20/281eae9d-89da-4735-8a31-b17e25f5c8d0.jpg',

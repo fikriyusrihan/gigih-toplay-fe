@@ -1,7 +1,7 @@
 import { Card, CardBody, Heading, Stack, Image } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import { products } from '../../utils/dummy_data';
 import PropTypes from 'prop-types';
+import axios from '../../utils/axios';
 
 Index.propTypes = {
   id: PropTypes.string.isRequired
@@ -15,8 +15,10 @@ export default function Index({ id }) {
   };
 
   useEffect(() => {
-    const product = products.find((product) => product.id === id);
-    setProduct(product);
+    axios.get('/products/' + id).then((res) => {
+      const product = res.data.data;
+      setProduct(product);
+    });
   }, []);
 
   return (

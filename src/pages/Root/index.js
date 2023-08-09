@@ -10,9 +10,9 @@ import {
   InputLeftElement,
   Text
 } from '@chakra-ui/react';
-import { videos } from '../../utils/dummy_data';
 import { useEffect, useState } from 'react';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
+import axios from '../../utils/axios';
 
 export default function Index() {
   const [query, setQuery] = useState('');
@@ -23,18 +23,17 @@ export default function Index() {
   };
 
   useEffect(() => {
-    setResponse({ data: videos });
+    axios.get('/videos').then((res) => {
+      const videos = res.data.data.items;
+      setResponse({ data: videos });
+    });
   }, []);
 
   useEffect(() => {
-    if (query.length > 0) {
-      const data = videos.filter((video) =>
-        video.title.toLowerCase().includes(query.toLowerCase())
-      );
-      setResponse({ data });
-    } else {
+    axios.get('/videos', { params: { title: query } }).then((res) => {
+      const videos = res.data.data.items;
       setResponse({ data: videos });
-    }
+    });
   }, [query]);
   return (
     <>

@@ -1,4 +1,3 @@
-import { comment, videos } from '../../utils/dummy_data';
 import { Divider, Grid, GridItem } from '@chakra-ui/react';
 import { useLoaderData } from 'react-router-dom';
 import Comment from '../../components/Comment';
@@ -10,10 +9,13 @@ import FeaturedProducts from '../../components/FeaturedProducts';
 import VideoDetail from '../../components/VideoDetail';
 import { getVideoId } from '../../utils/youtube';
 import { useEffect, useState } from 'react';
+import axios from '../../utils/axios';
 
 export async function loader({ params }) {
   const { videoId } = params;
-  const video = videos.filter((video) => video.id === videoId)[0];
+
+  const response = await axios.get('/videos/' + videoId);
+  const video = response.data.data;
 
   return { video };
 }
@@ -23,8 +25,12 @@ export default function Index() {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    const data = comment.filter((comment) => comment.video_id === video.id);
-    setComments(data);
+    axios
+      .get('/videos/' + video.id + '/comments', { params: { limit: 10, page: 1 } })
+      .then((res) => {
+        const comments = res.data.data.items;
+        setComments(comments);
+      });
   }, []);
 
   return (
