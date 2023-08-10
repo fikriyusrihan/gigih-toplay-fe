@@ -1,10 +1,11 @@
 import { Button, FormControl, Input, Stack } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from '../../utils/axios';
 import { useParams } from 'react-router-dom';
 
 export default function Index() {
   const params = useParams();
+  const [preDefinedUsername, setPreDefinedUsername] = useState('');
   const [form, setForm] = useState({
     username: '',
     comment: ''
@@ -23,10 +24,28 @@ export default function Index() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post('/videos/' + params.videoId + '/comments', form).then(() => {
+    const payload = preDefinedUsername !== '' ? { ...form, username: preDefinedUsername } : form;
+
+    axios.post('/videos/' + params.videoId + '/comments', payload).then(() => {
       setForm({ ...form, comment: '' });
     });
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem('access_token');
+    if (!token) return;
+
+    axios
+      .get('/users/me', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then((res) => {
+        const user = res.data.data.user;
+        setPreDefinedUsername(user.username);
+      });
+  }, []);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -36,8 +55,10 @@ export default function Index() {
             name="username"
             placeholder="Name"
             size="sm"
-            value={form.name}
+            value={preDefinedUsername !== '' ? preDefinedUsername : form.username}
             onChange={handleNameChange}
+            defaultValue={preDefinedUsername}
+            readOnly={preDefinedUsername !== ''}
           />
         </FormControl>
 
