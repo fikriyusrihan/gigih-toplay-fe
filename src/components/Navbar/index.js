@@ -1,10 +1,13 @@
 import { Button, Flex, Heading, Icon } from '@chakra-ui/react';
 import { FaFilm, FaRightToBracket } from 'react-icons/fa6';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import UserProfile from '../UserProfile';
 
 export default function Index() {
+  const navigator = useNavigate();
+
   const handleLoginClick = () => {
-    alert('Coming soon!');
+    navigator('/login');
   };
 
   return (
@@ -18,14 +21,18 @@ export default function Index() {
         </Flex>
       </Link>
 
-      <Button
-        onClick={handleLoginClick}
-        leftIcon={<FaRightToBracket />}
-        colorScheme="green"
-        variant="outline"
-        size="sm">
-        Login
-      </Button>
+      {localStorage.getItem('access_token') ? (
+        <UserProfile />
+      ) : (
+        <Button
+          onClick={handleLoginClick}
+          leftIcon={<FaRightToBracket />}
+          colorScheme="green"
+          variant="outline"
+          size="sm">
+          Login
+        </Button>
+      )}
     </Flex>
   );
 }

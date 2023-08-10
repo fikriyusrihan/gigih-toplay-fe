@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Root from './pages/Root';
 import Error from './pages/Error';
+import Login from './pages/Login';
 import Video, { loader as videoLoader } from './pages/Video';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
     path: '/',
     element: <Root />,
     errorElement: <Error />
+  },
+  {
+    path: '/login',
+    element: <Login />
   },
   {
     path: '/videos/:videoId',
