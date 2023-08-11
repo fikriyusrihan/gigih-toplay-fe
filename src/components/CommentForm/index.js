@@ -3,10 +3,13 @@ import { useEffect, useState } from 'react';
 import axios from '../../utils/axios';
 import { useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import useUser from '../../hooks/useUser';
 
 export default function Index() {
   const params = useParams();
   const isLoggedIn = useAuth();
+  const userInfo = useUser();
+
   const [form, setForm] = useState({
     username: '',
     comment: ''
@@ -31,20 +34,10 @@ export default function Index() {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem('access_token');
-    if (!token) return;
-
-    axios
-      .get('/users/me', {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-      .then((res) => {
-        const user = res.data.data.user;
-        setForm({ ...form, username: user.username });
-      });
-  }, []);
+    if (isLoggedIn && userInfo) {
+      setForm({ ...form, username: userInfo.username });
+    }
+  }, [userInfo]);
 
   return (
     <form onSubmit={handleSubmit}>

@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
-import axios from '../../utils/axios';
 import { HStack, Icon, Text } from '@chakra-ui/react';
 import { FaUser, FaArrowRightFromBracket } from 'react-icons/fa6';
+import useUser from '../../hooks/useUser';
 
 export default function Index() {
-  const [user, setUser] = useState({});
+  const userInfo = useUser();
+
+  console.log(userInfo);
 
   const handleLogoutClick = () => {
     if (confirm('Are you sure you want to logout?')) {
@@ -13,26 +14,11 @@ export default function Index() {
     }
   };
 
-  useEffect(() => {
-    const token = localStorage.getItem('access_token');
-
-    axios
-      .get('/users/me', {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-      .then((res) => {
-        const user = res.data.data.user;
-        setUser(user);
-      });
-  }, []);
-
   return (
     <HStack>
       <Icon as={FaUser} color="gray.500" />
       <Text fontSize="sm" color="gray.500">
-        {user.username}
+        {userInfo?.username}
       </Text>
 
       <Icon
