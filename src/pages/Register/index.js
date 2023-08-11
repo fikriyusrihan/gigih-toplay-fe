@@ -1,11 +1,13 @@
 import Navbar from '../../components/Navbar';
 import { Box, Heading, VStack, Text, FormControl, Input, Button } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form, Link, useNavigate } from 'react-router-dom';
 import axios from '../../utils/axios';
+import useAuth from '../../hooks/useAuth';
 
 export default function Index() {
   const navigate = useNavigate();
+  const isLoggedIn = useAuth();
 
   const [form, setForm] = useState({
     username: '',
@@ -27,6 +29,12 @@ export default function Index() {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/');
+    }
+  }, [isLoggedIn]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -90,7 +98,7 @@ export default function Index() {
             <Text mt={5}>
               Already have an account?{' '}
               <Text as="span" color="green.500" fontWeight="bold">
-                <Link to="/register">Login</Link>
+                <Link to="/login">Login</Link>
               </Text>
             </Text>
           </VStack>

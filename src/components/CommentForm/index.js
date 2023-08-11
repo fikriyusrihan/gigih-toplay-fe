@@ -2,10 +2,11 @@ import { Button, FormControl, Input, Stack } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import axios from '../../utils/axios';
 import { useParams } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 export default function Index() {
   const params = useParams();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isLoggedIn = useAuth();
   const [form, setForm] = useState({
     username: '',
     comment: ''
@@ -41,7 +42,6 @@ export default function Index() {
       })
       .then((res) => {
         const user = res.data.data.user;
-        setIsLoggedIn(true);
         setForm({ ...form, username: user.username });
       });
   }, []);

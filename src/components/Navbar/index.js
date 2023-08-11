@@ -2,8 +2,10 @@ import { Button, Flex, Heading, Icon } from '@chakra-ui/react';
 import { FaFilm, FaRightToBracket } from 'react-icons/fa6';
 import { Link, useNavigate } from 'react-router-dom';
 import UserProfile from '../UserProfile';
+import useAuth from '../../hooks/useAuth';
 
 export default function Index() {
+  const isLoggedIn = useAuth();
   const navigator = useNavigate();
 
   const handleLoginClick = () => {
@@ -21,7 +23,7 @@ export default function Index() {
         </Flex>
       </Link>
 
-      {localStorage.getItem('access_token') ? (
+      {isLoggedIn ? (
         <UserProfile />
       ) : (
         <Button

@@ -1,13 +1,14 @@
 import Navbar from '../../components/Navbar';
 import { Box, Heading, VStack, Text, FormControl, Input, Button } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form, Link, useNavigate } from 'react-router-dom';
 import axios from '../../utils/axios';
+import useAuth from '../../hooks/useAuth';
 
 export default function Index() {
   const navigate = useNavigate();
+  const isLoggedIn = useAuth();
 
-  // const [error, setError] = useState('');
   const [form, setForm] = useState({
     email: '',
     password: ''
@@ -38,6 +39,12 @@ export default function Index() {
         alert(err.response.data.message);
       });
   };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/');
+    }
+  }, [isLoggedIn]);
 
   return (
     <>
