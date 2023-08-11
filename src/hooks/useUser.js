@@ -2,6 +2,11 @@ import axios from '../utils/axios';
 import { useEffect, useState } from 'react';
 
 const useUser = () => {
+  const isLoggedIn = localStorage.getItem('access_token') !== null;
+  if (!isLoggedIn) {
+    return null;
+  }
+
   const [userInfo, setUserInfo] = useState(null);
 
   const fetchUserInfo = async () => {
