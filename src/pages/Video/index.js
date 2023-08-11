@@ -33,7 +33,7 @@ export default function Index() {
         setComments(comments);
       });
 
-    const socket = io(`ws://localhost:3080`, {
+    const socket = io(process.env.REACT_APP_SOCKET_URL, {
       path: '/api/v1/comments',
       query: { videoId: video.id }
     });
