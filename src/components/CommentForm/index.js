@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 
 export default function Index() {
   const params = useParams();
-  const [preDefinedUsername, setPreDefinedUsername] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [form, setForm] = useState({
     username: '',
     comment: ''
@@ -24,9 +24,7 @@ export default function Index() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const payload = preDefinedUsername !== '' ? { ...form, username: preDefinedUsername } : form;
-
-    axios.post('/videos/' + params.videoId + '/comments', payload).then(() => {
+    axios.post('/videos/' + params.videoId + '/comments', form).then(() => {
       setForm({ ...form, comment: '' });
     });
   };
@@ -43,7 +41,8 @@ export default function Index() {
       })
       .then((res) => {
         const user = res.data.data.user;
-        setPreDefinedUsername(user.username);
+        setIsLoggedIn(true);
+        setForm({ ...form, username: user.username });
       });
   }, []);
 
@@ -55,10 +54,10 @@ export default function Index() {
             name="username"
             placeholder="Name"
             size="sm"
-            value={preDefinedUsername !== '' ? preDefinedUsername : form.username}
+            value={form.username}
+            variant={isLoggedIn ? 'filled' : 'outline'}
             onChange={handleNameChange}
-            defaultValue={preDefinedUsername}
-            readOnly={preDefinedUsername !== ''}
+            readOnly={isLoggedIn}
           />
         </FormControl>
 
