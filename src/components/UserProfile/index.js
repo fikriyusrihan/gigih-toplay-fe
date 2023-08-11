@@ -5,8 +5,6 @@ import useUser from '../../hooks/useUser';
 export default function Index() {
   const userInfo = useUser();
 
-  console.log(userInfo);
-
   const handleLogoutClick = () => {
     if (confirm('Are you sure you want to logout?')) {
       localStorage.removeItem('access_token');
