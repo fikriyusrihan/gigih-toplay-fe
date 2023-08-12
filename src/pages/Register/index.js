@@ -1,5 +1,17 @@
 import Navbar from '../../components/Navbar';
-import { Box, Heading, VStack, Text, FormControl, Input, Button } from '@chakra-ui/react';
+import {
+  Box,
+  Heading,
+  VStack,
+  Text,
+  FormControl,
+  Input,
+  Button,
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle
+} from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { Form, Link, useNavigate } from 'react-router-dom';
 import axios from '../../utils/axios';
@@ -8,6 +20,8 @@ import useAuth from '../../hooks/useAuth';
 export default function Index() {
   const navigate = useNavigate();
   const isLoggedIn = useAuth();
+
+  const [errorMessage, setErrorMessage] = useState('');
 
   const [form, setForm] = useState({
     username: '',
@@ -39,18 +53,23 @@ export default function Index() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post('/register', form).then((res) => {
-      const token = res.data.data.token;
-      localStorage.setItem('access_token', token);
+    axios
+      .post('/register', form)
+      .then((res) => {
+        const token = res.data.data.token;
+        localStorage.setItem('access_token', token);
 
-      navigate('/');
-    });
+        navigate('/');
+      })
+      .catch((error) => {
+        setErrorMessage(error.response.data.message);
+      });
   };
 
   return (
     <>
       <Navbar />
-      <Box mt={{ base: 10, md: 100 }} mx="auto" p={5} w={['90%', '40%']} boxShadow="xs">
+      <Box mt={{ base: 10, md: 50 }} mx="auto" p={5} w={['90%', '40%']} boxShadow="xs">
         <VStack>
           <Heading as="h1" size="md" textAlign="center">
             Create an Account
@@ -61,6 +80,14 @@ export default function Index() {
           </Text>
 
           <VStack w="100%" p={5}>
+            {errorMessage && (
+              <Alert mb={2} status="error">
+                <AlertIcon />
+                <AlertTitle>Error:</AlertTitle>
+                <AlertDescription>{errorMessage}</AlertDescription>
+              </Alert>
+            )}
+
             <Form style={{ width: '100%' }} onSubmit={handleSubmit}>
               <FormControl isRequired>
                 <Input
@@ -75,6 +102,7 @@ export default function Index() {
                 <Input
                   name="email"
                   placeholder="Email"
+                  type="email"
                   value={form.email}
                   onChange={handleEmailChange}
                 />

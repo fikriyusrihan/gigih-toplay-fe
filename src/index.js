@@ -16,16 +16,19 @@ const router = createHashRouter([
   },
   {
     path: '/login',
-    element: <Login />
+    element: <Login />,
+    errorElement: <Error />
   },
   {
     path: '/register',
-    element: <Register />
+    element: <Register />,
+    errorElement: <Error />
   },
   {
     path: '/videos/:videoId',
     loader: videoLoader,
-    element: <Video />
+    element: <Video />,
+    errorElement: <Error />
   }
 ]);
 
