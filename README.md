@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+# Tokopedia Play Clone FE 🖥️
+This is the frontend repository for Tokopedia Play Clone.
+This application is built using React.js.
+This project is a part of Generasi GIGIH 3.0 Final Project submission.
+Any feedbacks are welcome!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents 📑
+<!-- TOC -->
+* [Tokopedia Play Clone FE 🖥️](#tokopedia-play-clone-fe-)
+  * [Table of Contents 📑](#table-of-contents-)
+  * [Run the Application ▶️](#run-the-application-)
+    * [Run without Docker 💿](#run-without-docker-)
+    * [Run with Docker 🐳](#run-with-docker-)
+    * [Run with Docker Compose 🐳](#run-with-docker-compose-)
+  * [.env File Configuration ⚙️](#env-file-configuration-)
+  * [Tools ⚒️](#tools-)
+  * [Bonus Checklist 📝](#bonus-checklist-)
+  * [Features 📝](#features-)
+  * [Deployed Application 🚀](#deployed-application-)
+<!-- TOC -->
 
-## Available Scripts
+## Run the Application ▶️
+### Run without Docker 💿
+This application requires Node.js and npm to run. Make sure you have installed Node.js and npm on your computer, then do the following steps.
 
-In the project directory, you can run:
+```bash
+# Move to the workspace directory
+cd workspace
 
-### `npm start`
+# Clone the repository
+git clone https://github.com/fikriyusrihan/gigih-toplay-fe.git
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Move to the application directory
+cd gigih-toplay-fe
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Install the dependencies
+npm install
 
-### `npm test`
+# Run the application
+npm start
+```
+Please make sure that the backend application is already running before running this application.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Run with Docker 🐳
+This application can also be run using Docker. Make sure you have installed Docker on your computer, then do the following steps.
 
-### `npm run build`
+```bash
+# Move to the workspace directory
+cd workspace
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Clone the repository
+git clone https://github.com/fikriyusrihan/gigih-toplay-fe.git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Build the Docker image
+docker build -t gigih-toplay-fe .
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Run the Docker container
+docker run -p 3000:3000 gigih-toplay-fe
+```
 
-### `npm run eject`
+### Run with Docker Compose 🐳
+You can also run this application as a whole service including the frontend, backend, and database using Docker Compose. Make sure you have installed Docker Compose on your computer, then do the following steps.
+- Download the docker-compose.yml file [here](https://gist.github.com/fikriyusrihan/84eaecf2fab4caa626b4881493f46ec6).
+- Move the docker-compose.yml file to the `workspace` directory.
+- Run the following command.
+```bash
+# Move to the workspace directory
+cd workspace
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Run Docker Compose
+docker-compose up --build
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## .env File Configuration ⚙️
+You can configure the application by changing the values in the `.env` file. The following is the default configuration of the application.
+```bash
+REACT_APP_API_URL=http://localhost:3080/api/v1
+REACT_APP_SOCKET_URL=ws://localhost:3080
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Tools ⚒️
+The following are the tools used in this project.
+- [React.js](https://reactjs.org/) - A JavaScript library for building user interfaces
+- [React Router](https://reactrouter.com/) - A collection of navigational components that compose declaratively with your application
+- [Chakra UI](https://chakra-ui.com/) - A simple, modular and accessible component library that gives you the building blocks you need to build your React applications
+- [React Icons](https://react-icons.github.io/react-icons/) - A collection of icons for React
+- [Axios](https://axios-http.com/) - Promise based HTTP client for the browser and node.js
+- [Socket.IO](https://socket.io/) - A library that enables real-time, bidirectional and event-based communication between the browser and the server
+- [Docker](https://www.docker.com/) - A set of platform as a service products that use OS-level virtualization to deliver software in packages called containers
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Bonus Checklist 📝
+- Add authentication to achieve user-specific data ✅
+- Implement websockets to achieve live update of the comments data ✅
+- Implement search feature for videos ✅
 
-## Learn More
+## Features 📝
+- [x] User can see a list of videos
+- [x] User can search for videos
+- [x] User can see a video detail
+- [x] User can see a list of comments of a video
+- [x] User can add a comment to a video
+- [x] User can see a real-time update of the comments data
+- [x] User can log in and register an account
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Deployed Application 🚀
+This application is deployed on Azure Virtual Machine and Docker.
+You can access the application at [http://gigih-tokoplay.southeastasia.cloudapp.azure.com/](http://gigih-tokoplay.southeastasia.cloudapp.azure.com/).
