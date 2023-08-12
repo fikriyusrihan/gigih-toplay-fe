@@ -51,17 +51,16 @@ export default function Index() {
     <>
       <Navbar />
       <Grid
-        h="100vh"
         my={{ base: 2, md: 10 }}
         px={{ base: 2, md: 10 }}
         gap={2}
         templateColumns="repeat(10, 1fr)"
-        templateRows="repeat(10, 1fr)">
-        <GridItem rowSpan={8} colSpan={{ base: 10, md: 7 }} bg="green" rounded={4}>
+        templateRows="repeat(5, 1fr)">
+        <GridItem rowSpan={3} colSpan={{ base: 10, md: 7 }} bg="green" rounded={4}>
           <Youtube videoId={getVideoId(video.video_url)} />
         </GridItem>
 
-        <GridItem rowSpan={6} colSpan={{ base: 10, md: 3 }}>
+        <GridItem rowSpan={2} colSpan={{ base: 10, md: 3 }}>
           <Comment>
             {comments.map((comment) => (
               <CommentItem key={comment.id} comment={comment} />
@@ -69,11 +68,11 @@ export default function Index() {
           </Comment>
         </GridItem>
 
-        <GridItem rowSpan={2} colSpan={{ base: 10, md: 3 }}>
+        <GridItem rowSpan={1} colSpan={{ base: 10, md: 3 }}>
           <CommentForm />
         </GridItem>
 
-        <GridItem rowSpan={2} colSpan={10} marginTop={5}>
+        <GridItem rowSpan={2} colSpan={10} mt={5}>
           <VideoDetail video={video} />
 
           <Divider marginTop={5} />

@@ -1,4 +1,4 @@
-import { Card, CardBody, Heading, Stack, Image } from '@chakra-ui/react';
+import { Card, CardBody, Heading, Image, Stack, Text } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from '../../utils/axios';
@@ -17,6 +17,12 @@ export default function Index({ id }) {
   useEffect(() => {
     axios.get('/products/' + id).then((res) => {
       const product = res.data.data;
+
+      product.price = new Intl.NumberFormat('id-ID', {
+        style: 'currency',
+        currency: 'IDR'
+      }).format(product.price);
+
       setProduct(product);
     });
   }, []);
@@ -31,10 +37,13 @@ export default function Index({ id }) {
           alt={`${product.name} thumbnail`}
           borderRadius="lg"
         />
-        <Stack mt="2">
+        <Stack mt="2" gap={1}>
           <Heading size="sm" textAlign="center" noOfLines={1}>
             {product.title}
           </Heading>
+          <Text fontSize="sm" textAlign="center" noOfLines={1}>
+            {product.price}
+          </Text>
         </Stack>
       </CardBody>
     </Card>
