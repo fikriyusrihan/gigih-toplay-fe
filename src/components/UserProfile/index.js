@@ -1,5 +1,5 @@
-import { HStack, Icon, Text } from '@chakra-ui/react';
-import { FaUser, FaArrowRightFromBracket } from 'react-icons/fa6';
+import { Avatar, HStack, Icon, Text } from '@chakra-ui/react';
+import { FaArrowRightFromBracket } from 'react-icons/fa6';
 import useUser from '../../hooks/useUser';
 
 export default function Index() {
@@ -14,10 +14,12 @@ export default function Index() {
 
   return (
     <HStack>
-      <Icon as={FaUser} color="gray.500" />
-      <Text fontSize="sm" color="gray.500">
-        {userInfo?.username}
-      </Text>
+      <HStack boxShadow="xs" borderRadius={4} p={2} px={4}>
+        <Avatar size="sm" name={userInfo?.username} />
+        <Text fontSize="sm" color="gray.500">
+          {userInfo?.username}
+        </Text>
+      </HStack>
 
       <Icon
         ml={2}
